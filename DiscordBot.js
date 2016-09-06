@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 var bot = new Discord.Client();
-var token = "MjE5MDAyMDUzNDU0NzI1MTIw.CqLZHg.t7_m5Ir3RbJuuzhEb1Vbuy-eE0Q";
+var token;
 bot.loginWithToken(token);
 
 bot.on("ready", function () {
@@ -9,6 +9,7 @@ bot.on("ready", function () {
 
 var warnList = {};
 
+//bot chat commands
 bot.on("message", function(message) {
     var msg = message.content.toLowerCase();
     if(!msg.includes("@")){
@@ -26,6 +27,7 @@ bot.on("message", function(message) {
     }
 });
 
+//greets users that join the voice channel
 bot.on("voiceJoin", function(voiceJoin, user, voiceChannel) {
     if(bot.servers.get("name", "Nixon was never caught") != null){
         var channel = bot.servers.get("name", "Nixon was never caught").channels.get("name", "general");
@@ -35,6 +37,7 @@ bot.on("voiceJoin", function(voiceJoin, user, voiceChannel) {
     console.log(voiceJoin);
 });
 
+//updates people in the chat channel on the status of users 
 bot.on("presence", function(presence, user) {
    if(bot.servers.get("name", "Nixon was never caught") != null){
         var channel = bot.servers.get("name", "Nixon was never caught").channels.get("name", "general");
@@ -44,6 +47,7 @@ bot.on("presence", function(presence, user) {
 
 });
 
+//function that returns the uptime of the bot
 function msToTime(uptime){
     var milli = parseInt(uptime%1000);
     var seconds = parseInt((uptime/1000)%60);
@@ -52,6 +56,7 @@ function msToTime(uptime){
     return hours + ":" + minutes + ":" + seconds + ":" + milli;
 }
 
+//function that records the number of warnings given to users
 function warn(message){
     if(warnList[message.author] != null){
         var warnNum = warnList[message.author];
