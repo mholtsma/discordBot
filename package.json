@@ -1,0 +1,12 @@
+{
+  "name": "discordbot",
+  "version": "1.0.0",
+  "description": "A bot for posting stuff to discord",
+  "main": "DiscordBot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" "node DiscordBot.js"
+  },
+  "author": "Marc Holtsman",
+  "license": "ISC"
+}
